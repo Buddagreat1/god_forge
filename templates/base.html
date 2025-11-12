@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}God Forge{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- 🟣 Persistent Tabs -->
+  <div class="tabs">
+    <div class="tab {% if active_tab == 'home' %}active{% endif %}" onclick="window.location.href='/'">Home</div>
+    <div class="tab {% if active_tab == 'hero' %}active{% endif %}" onclick="window.location.href='/hero'">Hero</div>
+    <div class="tab {% if active_tab == 'settings' %}active{% endif %}" onclick="window.location.href='/settings'">Settings</div>
+  </div>
+
+  <!-- 🌍 Dynamic Page Content -->
+  <main id="page-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- 🎵 Persistent Music Controls -->
+  <div class="music-controls">
+    <button id="play-btn" class="gold-btn">▶️ Play Music</button>
+    <button id="mute-btn">🔊</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.3">
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="{{ url_for('static', filename='bg_music.mp3') }}" type="audio/mpeg">
+  </audio>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bg-music");
+    const playBtn = document.getElementById("play-btn");
+    const muteBtn = document.getElementById("mute-btn");
+    const volumeSlider = document.getElementById("volume-slider");
+
+    music.volume = volumeSlider.value;
+
+    volumeSlider.addEventListener("input", () => {
+      music.volume = volumeSlider.value;
+    });
+
+    muteBtn.addEventListener("click", () => {
+      music.muted = !music.muted;
+      muteBtn.textContent = music.muted ? "🔇" : "🔊";
+    });
+
+    playBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        playBtn.textContent = "⏸️ Pause";
+        playBtn.classList.add("playing");
+      } else {
+        music.pause();
+        playBtn.textContent = "▶️ Play Music";
+        playBtn.classList.remove("playing");
+      }
+    });
+  });
+  </script>
+</body>
+</html>

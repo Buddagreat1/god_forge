@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p>Here you can put detailed content or links related to “Help Links”.</p>
+        <button onclick="window.location.href='{{ url_for('home') }}'">Back Home</button>
+    </div>
+</body>
+</html>
