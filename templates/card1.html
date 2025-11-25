@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>{{ title }}</h1>
-        <p>Here you can put detailed content or links related to “Help Links”.</p>
-        <button onclick="window.location.href='{{ url_for('home') }}'">Back Home</button>
+{% extends "base.html" %}
+{% block title %}God Forge — News{% endblock %}
+{% block body_class %}card1{% endblock %}
+{% block content %}
+
+
+<div id="news-page">
+
+  <h1 class="news-title">Forge News & Updates</h1>
+
+  <div class="news-feed">
+
+    <!-- NEWS POST 1 -->
+    <div class="news-item">
+      <h2 class="news-item-title">🔥 Welcome to God Forge!</h2>
+      <p class="news-date">Posted: November 2025</p>
+      <p class="news-body">
+<p>The God Forge site is officially live!</p>
+
+<p>
+  <a href="https://www.fateless.gg/game/godforge/" target="_blank">
+    https://www.fateless.gg/game/godforge/
+  </a>
+</p>
+
     </div>
-</body>
-</html>
+
+    <!-- NEWS POST 2 -->
+    <div class="news-item">
+      <h2 class="news-item-title">⚔️ New Abilities Coming Soon</h2>
+      <p class="news-date">Posted: November 2025</p>
+      <p class="news-body">
+        A new system of magical abilities is being developed. Soon, your Hero will gain
+        access to powerful elemental attacks and upgraded stats.
+      </p>
+    </div>
+
+    <!-- NEWS POST 3 -->
+    <div class="news-item">
+      <h2 class="news-item-title">🛡 Inventory Expansion</h2>
+      <p class="news-date">Posted: November 2025</p>
+      <p class="news-body">
+        Inventory pages are being expanded to include armor sets, special weapons,
+        relics, and forging materials.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -148,7 +148,11 @@ def settings():
 # ================================================================
 @app.route("/card1")
 def card1():
-    return render_template("card1.html", title="Help Links")
+    return render_template("card1.html",
+                           active_tab="home",
+                           body_class="card1")
+
+
 
 @app.route("/card2")
 def card2():

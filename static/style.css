@@ -26,23 +26,23 @@
   --home-card-text: #FFD700;
 
   /* HOME TAB COLORS */
-  --home-tab-text: #ffffff;
-  --home-tab-hover: #81b7ff;
+  --home-tab-text: #114d0c;
+  --home-tab-hover: #96fa13;
   --home-tab-active-text: #FFD700;
   --home-tab-active-bg: #114d0c;
   /* ===============================
        HERO PAGE COLORS
      =============================== */
   --hero-text-color: #e0f0ff;
-  --hero-heading-color: #70e0ff;
+  --hero-heading-color: #FFD700;
   --hero-card-bg: #1b1b33;
   --hero-card-text: #FFD700;
 
   /* HERO TAB COLORS */
-  --hero-tab-text: #d0f0ff;
-  --hero-tab-hover: #8fd9ff;
-  --hero-tab-active-text: #000;
-  --hero-tab-active-bg: #70e0ff;
+  --hero-tab-text: #5de7ff;
+  --hero-tab-hover: #28b4fa;
+  --hero-tab-active-text: #FFD700;
+  --hero-tab-active-bg: #1b1b33;
 
   /* ===============================
        BUTTONS & MUSIC CONTROLS
@@ -73,14 +73,11 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background: var(--color-bg);
   font-family: var(--font-main);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
+
 
 /* ---------------------------------------------------------------
    🚫 IMPORTANT: No global text color here
@@ -109,6 +106,15 @@ html, body {
 
   color: inherit; /* ← THIS FIXES YOUR TAB COLOR ISSUE */
 }
+
+.tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* stays in front of everything */
+}
+
 
 /* ===============================
    🔥 HOME PAGE TAB COLORS
@@ -158,6 +164,11 @@ body.hero .tab.active {
   padding-left: 80px;    /* adjust this to sit exactly above card 1 */
 }
 
+#heroes,
+#hero-section {
+  padding-top: 120px;  /* adjust size for your tab height */
+}
+
 
 /* ===============================
    🏰 INTRO TITLES
@@ -204,11 +215,20 @@ body.hero .tab.active {
   border-radius: var(--radius-card);
   text-align: left;
   transition: 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+  box-shadow: 0 4px 10px rgba(104, 236, 137, 0.45);
 }
 .card:hover {
   transform: translateY(-6px);
 }
+
+body.card1 {
+    background-image: url("/static/images/card1.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* optional: makes the background stay while scrolling */
+}
+
 
 /* ===============================
    🟩 HOME PAGE BACKGROUND
@@ -225,7 +245,7 @@ body.hero .tab.active {
   align-items: center;
 
   color: var(--home-text-color);
-  padding-top: 15vh;
+  padding-top: 25vh;
 }
 
 #heroes .section-title,
@@ -292,4 +312,57 @@ body.hero .tab.active {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* ===============================
+   📰 NEWS PAGE STYLES
+   =============================== */
+
+#news-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  color: var(--home-text-color);
+  text-shadow: 1px 1px 3px #000;
+}
+
+.news-title {
+  font-size: 42px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--home-heading-color);
+}
+
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.news-item {
+  background: rgba(0,0,0,0.55);  /* translucent — or change to whatever you want */
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(167, 34, 34, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+
+.news-item-title {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: var(--home-heading-color);
+}
+
+.news-date {
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 0 0 10px;
+}
+
+.news-body {
+  font-size: 16px;
+  line-height: 1.5;
 }

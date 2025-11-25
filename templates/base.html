@@ -5,7 +5,11 @@
   <title>{% block title %}God Forge{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="{{ active_tab }}">
+
+<body class="
+  {% block body_class %}{% endblock %}
+  {{ active_tab }}
+">
 
   <!-- 🟣 Persistent Tabs -->
   <div class="tabs">
@@ -52,23 +56,13 @@
       if (music.paused) {
         music.play();
         playBtn.textContent = "⏸️ Pause";
-        playBtn.classList.add("playing");
       } else {
         music.pause();
         playBtn.textContent = "▶️ Play Music";
-        playBtn.classList.remove("playing");
       }
     });
   });
   </script>
-
-  <div class="tabs">
-  <div id="tab-home" class="tab {% if active_tab == 'home' %}active{% endif %}" onclick="window.location.href='/'">Home</div>
-
-  <div id="tab-hero" class="tab {% if active_tab == 'hero' %}active{% endif %}" onclick="window.location.href='/hero'">Hero</div>
-
-  <div id="tab-settings" class="tab {% if active_tab == 'settings' %}active{% endif %}" onclick="window.location.href='/settings'">Settings</div>
-</div>
 
 </body>
 </html>
